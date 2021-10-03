@@ -1,7 +1,7 @@
 import cv2 as cv
 import time
 from func import *
-
+import numpy as np
 
 cap = cv.VideoCapture(0)
 
@@ -17,8 +17,11 @@ while cap.isOpened():
         )
 
     cv.aruco.drawDetectedMarkers(frame, corners, borderColor=(0, 0, 255))
-
-
+    
+    if len(corners) >0:
+        one, two, three, four = points_for_draw(corners)
+        coloring(frame, one, two, three, four)
+    
     error_x, error_y = estimate_error(*center_of_aruco(corners), *center_of_camera(cap))
     
     show_on_screen(
