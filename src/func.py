@@ -1,6 +1,5 @@
 import cv2 as cv
 
-
 def center_of_aruco(corners):
     if corners == []:
         return (0,0)
@@ -28,3 +27,16 @@ def show_on_screen(frame, lable_text_dict, axix_y=20):
         cv.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
 
         axix_y += 20
+
+def points_for_draw(corners):
+    point_one   = (int(corners[0][0][0][0]), int(corners[0][0][0][1]))
+    point_two   = (int(corners[0][0][1][0]), int(corners[0][0][1][1]))
+    point_three = (int(corners[0][0][2][0]), int(corners[0][0][2][1]))
+    point_four  = (int(corners[0][0][3][0]), int(corners[0][0][3][1]))
+    return (point_one, point_two, point_three, point_four)
+
+def coloring(frame,one,two,three,four):
+    cv.line(frame, one, two, color=(255,0,0), thickness=3)
+    cv.line(frame, one, four, color=(0,255,0), thickness=3)
+    cv.line(frame, two, three, color=(255,0,0), thickness=3)
+    cv.line(frame, three, four, color=(255,0,0), thickness=3)
