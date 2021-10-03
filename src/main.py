@@ -1,7 +1,6 @@
 import cv2 as cv
 import time
 from func import *
-import numpy as np
 
 cap = cv.VideoCapture(0)
 
