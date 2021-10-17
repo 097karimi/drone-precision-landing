@@ -37,6 +37,6 @@ def identify_corners(corners):
 
 def draw_rectangle(frame,one,two,three,four):
     cv.line(frame, one, two, color=(255,0,0), thickness=3)
-    cv.line(frame, one, four, color=(0,255,0), thickness=3)
+    cv.line(frame, one, four, color=(255, 0,0), thickness=3)
     cv.line(frame, two, three, color=(255,0,0), thickness=3)
     cv.line(frame, three, four, color=(255,0,0), thickness=3)
