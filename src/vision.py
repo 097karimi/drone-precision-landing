@@ -3,13 +3,15 @@ import cv2 as cv
 
 class Vision:
     def __init__(self,cam=0):
-        self.__cap = cv.VideoCapture(cam)
-
+        self.__cam = cam
+        self.__cap = cv.VideoCapture(self.__cam)
 
     def __del__(self):
         self.__cap.release()
         cv.destroyAllWindows()
 
+    def __repr__(self):
+        return f'{self.__class__.__name__}({self.__cam})'
 
     def detect_markers(self ,cam=0):
         if self.__cap.isOpened():
